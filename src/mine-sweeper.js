@@ -23,10 +23,160 @@ const { NotImplementedError } = require('../extensions/index.js');
  *  [1, 1, 1]
  * ]
  */
-function minesweeper(/* matrix */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function minesweeper(matrix) {
+  const M = matrix.length, N = matrix[0].length;
+  console.log(M,N)
+ 
+  let resultMatrix = [];
+  for (let i = 0; i < M; i++) {
+    resultMatrix[i] = [0, 0, 0];
+  }
+  for(let i = 0; i < M; i++) {
+    for(let j = 0; j < N; j++) {
+      // resultMatrix[i][j] = 0;
+      if  (i === 0) {
+        if  (j === 0) {
+          if (matrix[i][j + 1]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i + 1][j]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i + 1][j + 1]) {
+            resultMatrix[i][j] += 1;
+          }
+        } else if (j === N - 1) {
+          if (matrix[i][j - 1]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i + 1][j]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i + 1][j - 1]) {
+            resultMatrix[i][j] += 1;
+          }
+        } else {
+          if (matrix[i][j - 1]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i][j + 1]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i + 1][j]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i + 1][j - 1]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i + 1][j + 1]) {
+            resultMatrix[i][j] += 1;
+          }
+        }
+      } else if(i === M - 1) {
+        if  (j === 0) {
+          if (matrix[i][j + 1]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i - 1][j]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i - 1][j + 1]) {
+            resultMatrix[i][j] += 1;
+          }
+        } else if (j === N - 1) {
+          if (matrix[i][j - 1]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i - 1][j]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i - 1][j - 1]) {
+            resultMatrix[i][j] += 1;
+          }
+        } else {
+          if (matrix[i][j - 1]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i][j + 1]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i - 1][j]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i - 1][j - 1]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i - 1][j + 1]) {
+            resultMatrix[i][j] += 1;
+          }
+        }
+      } else {
+        if  (j === 0) {
+          if (matrix[i - 1][j]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i - 1][j + 1]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i][j + 1]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i + 1][j]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i + 1][j + 1]) {
+            resultMatrix[i][j] += 1;
+          }
+        } else if (j === N - 1) {
+          if (matrix[i - 1][j]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i - 1][j - 1]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i][j - 1]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i + 1][j - 1]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i + 1][j]) {
+            resultMatrix[i][j] += 1;
+          }
+        } else {
+          if (matrix[i - 1][j - 1]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i - 1][j]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i - 1][j + 1]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i][j - 1]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i][j + 1]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i + 1][j - 1]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i + 1][j]) {
+            resultMatrix[i][j] += 1;
+          }
+          if (matrix[i + 1][j + 1]) {
+            resultMatrix[i][j] += 1;
+          }
+        }
+      }
+    }
+  }
+  return resultMatrix;
 }
+
+console.log(minesweeper( [ [true, false, false], [false, true, false], [false, false, false] ]));
+
 
 module.exports = {
   minesweeper
